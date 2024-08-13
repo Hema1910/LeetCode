@@ -7,7 +7,7 @@ class Solution {
             arr[i][0] = Math.max(arr[i-1][0], arr[i-1][1]+nums[i]);
             arr[i][1] = Math.max(arr[i-1][1], arr[i-1][0]-nums[i]);
         }
+    return Math.max(arr[n-1][0], arr[n-1][1]);
 
-        return Math.max(arr[n-1][0], arr[n-1][1]);
     }
 }
