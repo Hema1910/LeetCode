@@ -13,8 +13,7 @@ class Solution {
                 arr[i][j]=0;
             }
         }
-
-        for(int i=1;i<m+1;i++)
+       for(int i=1;i<m+1;i++)
         {
             for(int j=1;j<n+1;j++)
             {
@@ -32,7 +31,7 @@ class Solution {
          {
              return -1;
          }
-
-         return Math.max(m,n);
+     
+         return(Math.max(m,n));
     }
 }
