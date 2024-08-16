@@ -23,7 +23,7 @@ class Solution {
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
-        boolean leftToRight = true; // Flag to alternate order
+        boolean leftToRight = true; 
 
         while (!queue.isEmpty()) {
             int size = queue.size();
@@ -32,9 +32,9 @@ class Solution {
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
                 if (leftToRight) {
-                    levelList.add(node.val); // Add node value in normal order
+                    levelList.add(node.val); 
                 } else {
-                    levelList.add(0, node.val); // Add node value in reversed order
+                    levelList.add(0, node.val); 
                 }
 
                 if (node.left != null) {
@@ -46,7 +46,7 @@ class Solution {
             }
 
             result.add(levelList);
-            leftToRight = !leftToRight; // Toggle the order for the next level
+            leftToRight = !leftToRight; 
         }
 
         return result;
