@@ -13,7 +13,6 @@ class Solution {
         }
 
     public String shortestPalindrome(String s) {
-
         if (s.length() <= 1) {
             return s;
         }
@@ -29,3 +28,4 @@ class Solution {
         return reversedSuffix + s;
     }
 }
+
