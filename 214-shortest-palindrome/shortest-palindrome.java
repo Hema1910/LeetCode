@@ -1,37 +1,48 @@
 class Solution {
-
-    public boolean isPalindrome(String s) {
-        int i = 0, j = s.length() - 1;
-        while (i < j) {
-            if (s.charAt(i) != s.charAt(j)) {
-                return false;
-            }
-            i++;
-            j--;
-        }
-        return true;
-    }
-
-    public String shortestPalindrome(String s) {
-
-        if (s.length() <= 1) {
-            return s;
-        }
-
    
-        int longestPalindromeEnd = 0;
-        for (int i = s.length(); i >= 0; i--) {
-            if (isPalindrome(s.substring(0, i))) {
-                longestPalindromeEnd = i;
-                break;
-            }
-        }
-
-       
-        String suffix = s.substring(longestPalindromeEnd);
-        String reversedSuffix = new StringBuilder(suffix).reverse().toString();
-
-       
-        return reversedSuffix + s;
+    public static String shortestPalindrome(String s) {
+        String rev = new StringBuilder(s).reverse().toString();
+        String combined = s + "#" + rev;
+        int[] prefix = computePrefix(combined);
+        int palindromeLength = prefix[prefix.length - 1];
+        return rev.substring(0, s.length() - palindromeLength) + s;
     }
+
+    private static int[] computePrefix(String s) {
+        int[] prefix = new int[s.length()];
+        int j = 0;
+        
+        for (int i = 1; i < s.length(); i++) {
+            while (j > 0 && s.charAt(i) != s.charAt(j)) {
+                j = prefix[j - 1];
+            }
+            if (s.charAt(i) == s.charAt(j)) {
+                j++;
+            }
+            prefix[i] = j;
+        }
+        return prefix;
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
