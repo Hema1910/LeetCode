@@ -6,6 +6,5 @@ class Solution {
                                 out += str[i] + " ";
                  }
          return out + str[0];
-
     }
 }
