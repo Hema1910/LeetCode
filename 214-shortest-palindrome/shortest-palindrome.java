@@ -1,17 +1,10 @@
 class Solution {
    
     public static String shortestPalindrome(String s) {
-        
         String rev = new StringBuilder(s).reverse().toString();
-        
-     
         String combined = s + "#" + rev;
-        
-  
         int[] prefix = computePrefix(combined);
-     
         int palindromeLength = prefix[prefix.length - 1];
-        
         return rev.substring(0, s.length() - palindromeLength) + s;
     }
 
@@ -31,7 +24,5 @@ class Solution {
         return prefix;
     }
 
-   
 }
 
-    
