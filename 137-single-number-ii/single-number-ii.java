@@ -1,14 +1,21 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int x : nums) {
-            map.put(x, map.getOrDefault(x, 0) + 1);
+        int ones = 0;   // To keep track of numbers that have appeared once
+        int twos = 0;   // To keep track of numbers that have appeared twice
+        int threes = 0; // To keep track of numbers that have appeared three times
+
+        for (int num : nums) {
+            // Update `twos` with bits that were previously in `ones` and now appear again
+            twos |= ones & num;
+            // Update `ones` with current number
+            ones ^= num;
+            // Calculate `threes` where `ones` and `twos` have bits set
+            threes = ones & twos;
+            // Remove `threes` from `ones` and `twos` since the numbers appearing three times should be discarded
+            ones &= ~threes;
+            twos &= ~threes;
         }
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (entry.getValue() == 1) {
-                return entry.getKey();
-            }
-        }
-        return -1;
+
+        return ones; // `ones` will hold the number that appears exactly once
     }
 }
